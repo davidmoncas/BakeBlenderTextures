@@ -10,9 +10,6 @@ bl_info = {
 import bpy
 import os 
 
-b=bpy.ops 
-c=bpy.context 
-
 
 #Open a folder selection window to save the files there
 class CustomDrawOperator(bpy.types.Operator):
@@ -41,6 +38,10 @@ class CustomDrawOperator(bpy.types.Operator):
 
 
 def main(destinationPath):
+
+    b=bpy.ops 
+    c=bpy.context 
+
     # Create the destination folder
     if not os.path.exists(destinationPath):
         os.mkdir(destinationPath) 
@@ -74,7 +75,7 @@ def main(destinationPath):
 
     # Create a new image
     print("creating a new image")
-    b.image.new(name="texture", width=1024, height=1024, color=(0.0, 0.0, 0.0, 1.0), alpha=False, generated_type='BLANK', float=False, use_stereo_3d=False)
+    b.image.new(name="texture", width=8192, height=8192, color=(0.0, 0.0, 0.0, 1.0), alpha=False, generated_type='BLANK', float=False, use_stereo_3d=False)
 
     #Change the materials with the node editor
     print("copying the texture in each node")
